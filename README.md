@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SET UP
 
-Things you may want to cover:
+rails new colonies --database=postgresql
+rails db:create
+commit
+hub create (Git online repo)
+push
 
-* Ruby version
 
-* System dependencies
+QUESTION 1.
 
-* Configuration
+Draw the db
+Generate the model.
+Adding association.
 
-* Database creation
+Creating the seed.
+5 differents for each models.
+Adding simple validation.
 
-* Database initialization
+Commit.
 
-* How to run the test suite
+QUESTION 2.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
