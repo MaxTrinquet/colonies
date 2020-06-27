@@ -23,3 +23,7 @@ Commit.
 
 QUESTION 2.
 
+Adding custom validation for start_date and end_date
+Rake creation with test.
+
+
