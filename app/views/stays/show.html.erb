@@ -1,0 +1,29 @@
+
+
+
+Booking <%= @stay.id %>
+
+
+<br>Start Date : <%= @stay.start_date %>
+<br>End Date : <%= @stay.end_date %>
+<br>Tenant email : <%= @stay.tenant.email %>
+<br>Studio's name : <%= @stay.studio.name %>
+
+<br>
+<%= @number_of_day_for_given_stay %>
+<br>
+
+<% @stay_range.each do |day| %>
+
+  <li> <%= day.to_a[0].strftime("%B %y") %> --
+
+    <%= day.to_a.size * @stay.studio.price / 31 %> $ --
+
+    <% if day.to_a[0].month >= Date.today.month %>
+      Unpaid
+    <% else %>
+      Paid
+    <% end %>
+
+  </li>
+<% end %>

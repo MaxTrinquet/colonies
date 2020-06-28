@@ -13,13 +13,19 @@ class Stay < ApplicationRecord
 
 
   def stay_period_not_overlapped
-    unless Stay.where(
-      '(start_date <= ? AND end_date >= ?) OR (start_date >= ? AND start_date <= ?)',
-      start_date, start_date,
-      start_date, end_date
-    ).empty?
-      errors.add(:start_date, 'Invalid period.')
+    # binding.pry if $debug
+    unless Stay.where('(
+      (start_date <= ? AND end_date >= ?)
+      OR
+      (start_date <= ? AND end_date >= ?)
+      OR
+      (start_date >= ? AND end_date <= ?)
+      )',
+        start_date, start_date,
+        end_date, end_date,
+        start_date, end_date,)
+        .where(studio_id: studio_id).empty?
+        errors.add(:start_date, "not available")
     end
   end
-
 end

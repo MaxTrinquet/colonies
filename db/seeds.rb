@@ -34,30 +34,30 @@ rome = Studio.create!(name: "Rome", price: 800)
 puts "Studios created"
 
 puts "Creating Stays"
-first_stay = Stay.new(start_date: 20200510, duration: 95)
+first_stay = Stay.new(start_date: '20200510', end_date: '20200910' )
 first_stay.tenant = maxime
 first_stay.studio = barcelone
 first_stay.save!
 
-second_stay = Stay.new(start_date: 20190412, duration: 15)
+second_stay = Stay.new(start_date: '20190412', end_date: '20200101' )
 second_stay.tenant = maxime
 second_stay.studio = paris
 second_stay.save!
 
-third_stay = Stay.new(start_date: 20200210, duration: 33)
+third_stay = Stay.new(start_date: '20200210', end_date: '20200707')
 third_stay.tenant = jean
 third_stay.studio = paris
 third_stay.save!
 
-fourth_stay = Stay.new(start_date: 20200101, duration: 43)
+fourth_stay = Stay.new(start_date: '20200101', end_date: '20201010')
 fourth_stay.tenant = alex
 fourth_stay.studio = berlin
 fourth_stay.save!
 
-fifth_stay = Stay.new(start_date: 20190101, duration: 160)
+fifth_stay = Stay.new(start_date: '20190101', end_date: '20201011')
 fifth_stay.tenant = sylvie
 fifth_stay.studio = madrid
-fourth_stay.save!
+fifth_stay.save!
 
 puts "Stays created"
 
