@@ -3,6 +3,11 @@ class Stay < ApplicationRecord
   belongs_to :studio
   validate :stay_period_not_overlapped, :end_date_after_start_date
 
+
+  def self.is_paid(current_month)
+    (current_month.to_a[0] >= Date.today.beginning_of_month) ? true : false
+  end
+
   private
 
   def end_date_after_start_date
@@ -28,4 +33,7 @@ class Stay < ApplicationRecord
         errors.add(:start_date, "not available")
     end
   end
+
+
+
 end
