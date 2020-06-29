@@ -7,11 +7,12 @@ class StaysController < ApplicationController
       group.last.first..group.last.last
     end
 
-
   end
 
   def index
     @stays = Stay.all
   end
+
+
 
 end

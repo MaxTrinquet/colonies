@@ -1,6 +1,10 @@
 <h1>Hello</h1>
 
+  <% @stays.each do |stay| %>
+    <li>
+      <%= link_to stay_path(stay) do  %>
+        Booking  <%= stay.id %> || Studio : <%= stay.studio.name %>
 
-<% @stays.each do |stay| %>
-  <li> Booking <%= stay.id %> </li>
-<% end %>
+      <% end %>
+    </li>
+  <% end %>
