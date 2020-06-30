@@ -9,9 +9,10 @@
 puts 'Database seeding...'
 
 puts 'Deleting all data'
-Stay.delete_all
-Tenant.delete_all
-Studio.delete_all
+Stay.destroy_all
+Tenant.destroy_all
+Studio.destroy_all
+Discount.destroy_all
 
 puts 'Creating tenants'
 
@@ -61,5 +62,16 @@ fifth_stay.save!
 
 puts "Stays created"
 
+puts "Creating Discount"
+
+first_discount = Discount.new(amount: 30, duration: 10, start_discount_date: '20200620')
+first_discount.stay = first_stay
+first_discount.save!
+
+second_discount = Discount.new(amount: 50, duration: 90 , start_discount_date: '20190710')
+second_discount.stay = second_stay
+second_discount.save!
+
+puts "Discount created"
 
 puts 'Finished!'

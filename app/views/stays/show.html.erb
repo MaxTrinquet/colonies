@@ -12,18 +12,61 @@
 
 <h3> Invoicing per month</h3>
 
-  <% @stay_range.each do |day| %>
+<% n=0 %>
+    <% @stay_range.each do |range| %>
+      <% if @discount_range_date.nil?.! %>
+        <% if @discount_range_date[n].nil?.! %>
+          <% if range.to_a[0].month == @discount_range_date[n].to_a[0].month %>
+            <li>
+              <% day_under_discount = @discount_range_date[n].to_a.size %>
+              <% discount_to_be_paid = day_under_discount * (@stay.studio.price / 31) * (1 - (@stay.discounts[0].amount)/100.to_f) %>
+              <% total_to_be_paid = (((range.to_a.size - day_under_discount) * @stay.studio.price / 31) + discount_to_be_paid).to_f %>
+              <%= range.to_a[0].strftime("%B %y") %> --
+              <%= total_to_be_paid%> $ --
+              <%= (range.to_a[0] <= Date.today.beginning_of_month) ? "Paid" : "Unpaid" %>
+              <i>Discounted : <%= discount_to_be_paid %> $ </i>
+              <% n = n + 1  %>
+            </li>
+          <% else %>
+            <li>
+              <%= range.to_a[0].strftime("%B %y") %> --
+              <%= (range.to_a.size * @stay.studio.price / 31) %> $ --
+              <%= (range.to_a[0] <= Date.today.beginning_of_month) ? "Paid" : "Unpaid" %>
+            </li>
+          <% end %>
+        <% else %>
+          <li>
+            <%= range.to_a[0].strftime("%B %y") %> --
+            <%= (range.to_a.size * @stay.studio.price / 31) %> $ --
+            <%= (range.to_a[0] <= Date.today.beginning_of_month) ? "Paid" : "Unpaid" %>
+          </li>
+        <% end %>
+      <% else %>
+        <li>
+          <%= range.to_a[0].strftime("%B %y") %> --
+          <%= (range.to_a.size * @stay.studio.price / 31) %> $ --
+          <%= (range.to_a[0] <= Date.today.beginning_of_month) ? "Paid" : "Unpaid" %>
+        </li>
+      <% end %>
+    <% end %>
 
-    <li> <%= day.to_a[0].strftime("%B %y") %> --
-
-      <%= day.to_a.size * @stay.studio.price / 31 %> $ --
-
-      <%= (day.to_a[0] <= Date.today.beginning_of_month) ? "Paid" : "Unpaid" %>
-
-    </li>
-  <% end %>
 
 
 
 
-<%=  link_to "back", stays_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
