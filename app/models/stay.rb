@@ -12,7 +12,7 @@ class Stay < ApplicationRecord
     end
   end
 
-
+  # custom validation
   def stay_period_not_overlapped
     # binding.pry if $debug
     unless Stay.where('(
